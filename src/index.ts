@@ -76,7 +76,7 @@ async function compile(
         }
 
         const destPath = srcPath
-            .replace(/^src\//, 'dist/')
+            .replace(new RegExp(`^src\\${path.sep}`), `dist${ path.sep}`)
             .replace(/.svelte$/, '.js');
         // Create all ancestor directories for this file
         await fs.mkdir(path.dirname(destPath), { recursive: true });
